@@ -14,7 +14,6 @@ public class Aluno {
 	private String nivelEducacional;
 	private String profissao;
 	private String cartaoCredito;
-	private String idAluno;
 	private CursoAluno cursos;
 	private PagamentoAluno pagamentos;
 		
@@ -60,12 +59,7 @@ public class Aluno {
 	public void setCartaoCredito(String cartaoCredito) {
 		this.cartaoCredito = cartaoCredito;
 	}
-	public String getIdAluno() {
-		return idAluno;
-	}
-	public void setIdAluno(String idAluno) {
-		this.idAluno = idAluno;
-	}
+
 	public CursoAluno getCursos() {
 		return cursos;
 	}

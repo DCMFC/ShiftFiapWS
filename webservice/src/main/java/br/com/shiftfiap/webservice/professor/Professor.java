@@ -7,7 +7,6 @@ public class Professor {
 	
 	private CursoProfessor cursos;
 	private String nome;
-	private String idProfessor;
 	private PagamentoProfessor pagamentos;
 	
 	public CursoProfessor getCursos() {
@@ -22,16 +21,11 @@ public class Professor {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	public String getIdProfessor() {
-		return idProfessor;
-	}
-	public void setIdProfessor(String idProfessor) {
-		this.idProfessor = idProfessor;
-	}
 	
 	public PagamentoProfessor getPagamentos() {
 		return pagamentos;
 	}
+	
 	public void setPagamentos(PagamentoProfessor pagamentos) {
 		this.pagamentos = pagamentos;
 	}
@@ -44,6 +38,11 @@ public class Professor {
 	public void receberPagamento(String nomeCurso)
 	{
 		this.pagamentos.receberPagamento(nomeCurso);
+	}
+	
+	public void responderMensagem(String resposta, String nomeCurso)
+	{
+		this.cursos.responderMensagem(nomeCurso, resposta);
 	}
 
 }

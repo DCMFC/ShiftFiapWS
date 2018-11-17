@@ -1,10 +1,9 @@
 package br.com.shiftfiap.webservice.aluno;
 
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
-import br.com.shiftfiap.webservice.curso.Curso;
+import br.com.shiftfiap.webservice.curso.CursoAluno;
+import br.com.shiftfiap.webservice.pagamento.PagamentoAluno;
 
 public class Aluno {
 
@@ -16,7 +15,8 @@ public class Aluno {
 	private String profissao;
 	private String cartaoCredito;
 	private String idAluno;
-	private List<Curso> cursos = new ArrayList<Curso>();
+	private CursoAluno cursos;
+	private PagamentoAluno pagamentos;
 		
 	public String getNome() {
 		return nome;
@@ -66,27 +66,36 @@ public class Aluno {
 	public void setIdAluno(String idAluno) {
 		this.idAluno = idAluno;
 	}
-	public List<Curso> getCursos() {
+	public CursoAluno getCursos() {
 		return cursos;
 	}
-	public void setCursos(List<Curso> cursos) {
+	public void setCursos(CursoAluno cursos) {
 		this.cursos = cursos;
 	}
 	
-	public void realizarCurso(Curso curso)
+	public void realizarCurso(String nomeCurso)
 	{
-		this.cursos.add(curso);
+		this.cursos.realizarCurso(nomeCurso);
 	}
 	
 	public void avaliarCurso(String nomeCurso, Integer nota) 
 	{
-		this.cursos.stream().filter(curso -> curso.getNome().equals(nomeCurso)).forEach(c -> c.getNotas().add(nota));
-		
+		this.cursos.avaliarCurso(nomeCurso, nota);
 	}
 	
 	public String gerarDiploma(String nomeCurso)
 	{
-		return this.cursos.stream().filter(curso -> curso.getNome().equals(nomeCurso)).findFirst().get().getDiploma();
+		return this.cursos.gerarDiploma(nomeCurso);
+	}
+	
+	public void enviarMensagem(String nomeCurso, String mensagem)
+	{
+		this.cursos.enviarMensagem(nomeCurso, mensagem);		
+	}
+	
+	public void pagarCurso(double valor, String nomeCurso)
+	{
+		this.pagamentos.pagarCurso(valor, nomeCurso);
 	}
 	
 	

@@ -1,18 +1,19 @@
 package br.com.shiftfiap.webservice.professor;
 
-import java.util.List;
-
-import br.com.shiftfiap.webservice.curso.Curso;
+import br.com.shiftfiap.webservice.curso.CursoProfessor;
+import br.com.shiftfiap.webservice.pagamento.PagamentoProfessor;
 
 public class Professor {
 	
-	private List<Curso> cursos;
+	private CursoProfessor cursos;
 	private String nome;
 	private String idProfessor;
-	public List<Curso> getCursos() {
+	private PagamentoProfessor pagamentos;
+	
+	public CursoProfessor getCursos() {
 		return cursos;
 	}
-	public void setCursos(List<Curso> cursos) {
+	public void setCursos(CursoProfessor cursos) {
 		this.cursos = cursos;
 	}
 	public String getNome() {
@@ -26,6 +27,23 @@ public class Professor {
 	}
 	public void setIdProfessor(String idProfessor) {
 		this.idProfessor = idProfessor;
+	}
+	
+	public PagamentoProfessor getPagamentos() {
+		return pagamentos;
+	}
+	public void setPagamentos(PagamentoProfessor pagamentos) {
+		this.pagamentos = pagamentos;
+	}
+	
+	public void cadastrarCurso(String nomeCurso, String descricao, String url, String nomeProfessor)
+	{
+		this.cadastrarCurso(nomeCurso, descricao, url, nomeProfessor);
+	}
+	
+	public void receberPagamento(String nomeCurso)
+	{
+		this.pagamentos.receberPagamento(nomeCurso);
 	}
 
 }

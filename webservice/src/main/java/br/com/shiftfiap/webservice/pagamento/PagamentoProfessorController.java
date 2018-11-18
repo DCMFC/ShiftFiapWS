@@ -13,11 +13,13 @@ public class PagamentoProfessorController extends Pagamento{
 	private List<Pagamento> pagamentos = new ArrayList<Pagamento>();
 
 	@GetMapping("/pagamentos/professor/{nomeCurso}")
-	public void receberPagamento(@PathVariable String nomeCurso)
+	public List<Pagamento> receberPagamento(@PathVariable String nomeCurso)
 	{
 		Pagamento pagamento = new Pagamento();
 		pagamento.setCurso(nomeCurso);
 		this.pagamentos.add(pagamento);
+		
+		return pagamentos;
 	}
 		
 }

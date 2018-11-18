@@ -10,9 +10,9 @@ public class ProfessorController {
 	Professor professor = new Professor();
 	
 	@PostMapping("/professores")
-	public Professor novoCadastro(@RequestBody Professor novoAluno)
+	public Professor novoCadastro(@RequestBody Professor novoProfessor)
 	{
-		this.professor = novoAluno;
+		this.professor = novoProfessor;
 		return professor;
 	}
 		

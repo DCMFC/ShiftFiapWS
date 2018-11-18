@@ -13,20 +13,24 @@ public class CursoAlunoController{
 	private List<Curso> cursos = new ArrayList<Curso>();
 	
 	@GetMapping("/cursos/aluno/{nomeCurso}")
-	public void realizarCurso(@PathVariable String nomeCurso)
+	public List<Curso> realizarCurso(@PathVariable String nomeCurso)
 	{
 		Curso curso = new Curso();
 		curso.setNome(nomeCurso);
 		this.cursos.add(curso);
+		
+		return cursos;
 	}
 	
 	@GetMapping("/cursos/aluno/{nomeCurso}/avaliacao/{nota}")
-	public void avaliarCurso(@PathVariable String nomeCurso, @PathVariable Integer nota) 
+	public List<Curso> avaliarCurso(@PathVariable String nomeCurso, @PathVariable Integer nota) 
 	{
 		//this.cursos.stream().filter(curso -> curso.getNome().equals(nomeCurso)).forEach(c -> c.getNotas().add(nota));
 		for(Curso curso : cursos)
 			if(curso.getNome().equals(nomeCurso))
 				curso.getNotas().add(nota);
+		
+		return cursos;
 		
 	}
 	
@@ -44,12 +48,14 @@ public class CursoAlunoController{
 	}
 	
 	@GetMapping("/cursos/aluno/{nomeCurso}/mensagem/{mensagem}")
-	public void enviarMensagem(@PathVariable String nomeCurso, @PathVariable String mensagem)
+	public List<Curso> enviarMensagem(@PathVariable String nomeCurso, @PathVariable String mensagem)
 	{
 		//this.cursos.stream().filter(curso -> curso.getNome().equals(nomeCurso)).findFirst().get().getMensagens().add(mensagem);		
 		for(Curso curso : cursos)
 			if(curso.getNome().equals(nomeCurso))
 				curso.getMensagens().add(mensagem);
+		
+		return cursos;
 	}
 	
 }

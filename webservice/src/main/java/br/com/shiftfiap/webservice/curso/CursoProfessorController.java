@@ -3,9 +3,12 @@ package br.com.shiftfiap.webservice.curso;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.com.shiftfiap.webservice.professor.Professor;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RestController;
 
-public class CursoProfessor extends Curso{
+@RestController
+public class CursoProfessorController extends Curso{
 	
 	private List<Curso> cursos = new ArrayList<Curso>();
 	
@@ -16,26 +19,20 @@ public class CursoProfessor extends Curso{
 		this.cursos = cursos;
 	}
 	
-	public void cadastrarCurso(String nomeCurso, String descricao, String url, String nomeProfessor)
+	@GetMapping("/cursos/professor/{nomeCurso}")
+	public void cadastrarCurso(String nomeCurso)
 	{
 		Curso curso = new Curso();
 		
 		curso.setNome(nomeCurso);
-		curso.setDescricao(descricao);
-		curso.setUrlVideo(url);
-		
-		Professor professor = new Professor();
-		professor.setNome(nomeProfessor);
-		
-		curso.setProfessor(professor);
-		
 		this.cursos.add(curso);
-		
 	}
 	
-	public void responderMensagem(String nomeCurso, String resposta)
+	@GetMapping("/cursos/professor/mensagem/{nomeCurso}/{reposta}")
+	public void responderMensagem(@PathVariable String resposta, @PathVariable String nomeCurso)
 	{
 		this.cursos.stream().filter(curso -> curso.getNome().equals(nomeCurso)).findFirst().get().getMensagens().add(resposta);
 	}
+	
 
 }

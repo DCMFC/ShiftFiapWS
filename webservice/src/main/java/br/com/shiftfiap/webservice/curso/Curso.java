@@ -18,43 +18,57 @@ public class Curso {
 	public String getNome() {
 		return nome;
 	}
+	
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
+	
 	public String getDescricao() {
 		return descricao;
 	}
+	
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
+	
 	public String getUrlVideo() {
 		return urlVideo;
 	}
+	
 	public void setUrlVideo(String urlVideo) {
 		this.urlVideo = urlVideo;
 	}
+	
 	public Professor getProfessor() {
 		return professor;
 	}
+	
 	public void setProfessor(Professor professor) {
 		this.professor = professor;
 	}
+	
 	public List<Integer> getNotas() {
 		return notas;
 	}
+	
 	public void setNotas(List<Integer> notas) {
 		this.notas = notas;
 	}
+	
 	public List<String> getMensagens() {
 		return mensagens;
 	}
+	
 	public void setMensagens(List<String> mensagens) {
 		this.mensagens = mensagens;
 	}
+	
 	public String getDiploma() {
 		return diploma;
 	}
+	
 	public void setDiploma(String diploma) {
 		this.diploma = diploma;
 	}
+	
 }

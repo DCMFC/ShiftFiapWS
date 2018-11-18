@@ -8,16 +8,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class CursoProfessorController extends Curso{
+public class CursoProfessorController{
 	
 	private List<Curso> cursos = new ArrayList<Curso>();
-	
-	public List<Curso> getCursos() {
-		return cursos;
-	}
-	public void setCursos(List<Curso> cursos) {
-		this.cursos = cursos;
-	}
 	
 	@GetMapping("/cursos/professor/{nomeCurso}")
 	public void cadastrarCurso(String nomeCurso)
@@ -31,7 +24,10 @@ public class CursoProfessorController extends Curso{
 	@GetMapping("/cursos/professor/mensagem/{nomeCurso}/{reposta}")
 	public void responderMensagem(@PathVariable String resposta, @PathVariable String nomeCurso)
 	{
-		this.cursos.stream().filter(curso -> curso.getNome().equals(nomeCurso)).findFirst().get().getMensagens().add(resposta);
+		//this.cursos.stream().filter(curso -> curso.getNome().equals(nomeCurso)).findFirst().get().getMensagens().add(resposta);
+		for(Curso curso : cursos)
+			if(curso.getNome().equals(nomeCurso))
+				curso.getMensagens().add(resposta);
 	}
 	
 

@@ -1,0 +1,10 @@
+server:
+  port: 8081
+spring:
+  application:
+    name: ms-user
+  cloud:
+    config:
+      discovery:
+        enable: true
+        service-id: ms-config-server
